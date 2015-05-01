@@ -1,0 +1,23 @@
+{
+  "name": "typeahead.js",
+  "version": "0.11.0",
+  "main": "dist/typeahead.bundle.js",
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "devDependencies": {
+    "jquery": "~1.7",
+    "jasmine-ajax": "~1.3.1",
+    "jasmine-jquery": "~1.5.2"
+  },
+  "homepage": "https://github.com/twitter/typeahead.js",
+  "_release": "0.11.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.11.0",
+    "commit": "5037e13837c3a74362624a4c6877fd9ea10ae3b2"
+  },
+  "_source": "git://github.com/twitter/typeahead.js.git",
+  "_target": "0.11.0",
+  "_originalSource": "typeahead.js"
+}
