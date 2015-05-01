@@ -55,3 +55,7 @@ gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git', :tag
 gem 'devise'
 gem 'devise_invitable'
 gem 'userstamp', git: 'git://github.com/andrezimpel/userstamp.git'
+
+
+# ical
+gem 'ri_cal'

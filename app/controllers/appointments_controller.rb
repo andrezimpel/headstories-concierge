@@ -1,10 +1,17 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  include AppointmentsHelper
 
   # GET /appointments
   # GET /appointments.json
   def index
     @appointments = Appointment.all
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.ics { render :text => generate_ical(@appointments) }
+    end
   end
 
   # GET /appointments/1

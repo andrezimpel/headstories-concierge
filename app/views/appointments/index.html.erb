@@ -39,3 +39,5 @@
 <br>
 
 <%= link_to 'New Appointment', new_appointment_path %>
+<br>
+<%= link_to "Sub", appointments_path(format: :ics, protocol: 'webcal', only_path: false) %>
