@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @appointment.title %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @appointment.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @appointment.end %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @appointment.notes %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @appointment.client_id %>
+</p>
+
+<p>
+  <strong>Alerts:</strong>
+  <%= @appointment.alerts %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @appointment.url %>
+</p>
+
+<p>
+  <strong>Calendar:</strong>
+  <%= @appointment.calendar_id %>
+</p>
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>
