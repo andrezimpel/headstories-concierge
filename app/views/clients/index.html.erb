@@ -1,0 +1,44 @@
+<h1>Listing Clients</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Bestätigt
+      </th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td>
+          <%= client.firstname %> <%= client.lastname %>
+        </td>
+        <td>
+          <%= client.email %>
+        </td>
+        <td>
+          <%= client.consent %>
+        </td>
+        <td>
+          <%= link_to "Subscription", client_path(client, format: :ics, protocol: 'webcal', only_path: false, auth_token: client.authentication_token) %>
+        </td>
+        <td><%= link_to 'Show', client %></td>
+        <td><%= link_to 'Edit', edit_client_path(client) %></td>
+        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Client', new_client_path, class: "btn btn-primary" %>

@@ -51,11 +51,21 @@ end
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git', :tag => 'v3.1.0.rc1'
 # gem 'haml-rails'
 
+
 # users
 gem 'devise'
 gem 'devise_invitable'
 gem 'userstamp', git: 'git://github.com/andrezimpel/userstamp.git'
+gem 'simple_token_authentication'
 
 
 # ical
 gem 'ri_cal'
+
+
+# locales
+gem 'rails-i18n', '~> 4.0.0'
+
+
+# exceptions
+gem 'exception_notification'

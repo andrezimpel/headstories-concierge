@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>head stories concierge</title>
+    <%= stylesheet_link_tag    'http://headstories.dev.andrezimpel.com/dist/css/headstories.css', media: 'all' %>
+    <%= stylesheet_link_tag    'public/appointments', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "layouts/partials/appointments/header" %>
+    <div class="page">
+      <div class="container">
+        <div class="page-wrapper">
+          <%= render "layouts/partials/alerts" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-wrapper">
+          <a class="address" href="#">
+            BARBAROSSASTRASSE 32, 09112 CHEMNITZ,
+          </a>
+          <a class="phone" href="tel:+4937128306883">
+            0371 .28306883
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

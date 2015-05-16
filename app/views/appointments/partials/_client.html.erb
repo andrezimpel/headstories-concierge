@@ -1,0 +1,17 @@
+<h1>concierge</h1>
+<br>
+<p>
+  Hallo <%= @appointment.client.firstname %>,<br>
+  hier sind Deine Informationen zu Deinem Termin.
+</p>
+<p>
+  <h4>Informationen:</h4>
+  <%= @appointment.start.strftime("%A, %B %e, %Y") %>
+  <br>
+  <%= @appointment.start.strftime("%H:%M") %> bis <%= @appointment.end.strftime("%H:%M") %>
+</p>
+<p>
+  <a href="#">Zum Kalender hinzufügen</a>
+  <br>
+  <a href="#">Verschieben</a>
+</p>

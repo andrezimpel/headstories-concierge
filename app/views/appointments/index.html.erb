@@ -1,43 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to 'New Appointment', new_appointment_path, class: "btn btn-primary pull-right" %>
+  <h1>Listing Appointments</h1>
+</div>
 
-<h1>Listing Appointments</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Notes</th>
-      <th>Client</th>
-      <th>Alerts</th>
-      <th>Url</th>
-      <th>Calendar</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @appointments_months.each do |month, appointments| %>
+  <h4><%= month.strftime("%A, %B %e, %Y") %></h4>
 
-  <tbody>
-    <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.title %></td>
-        <td><%= appointment.start %></td>
-        <td><%= appointment.end %></td>
-        <td><%= appointment.notes %></td>
-        <td><%= appointment.client_id %></td>
-        <td><%= appointment.alerts %></td>
-        <td><%= appointment.url %></td>
-        <td><%= appointment.calendar_id %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="list-group">
+    <% for appointment in appointments do %>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-sm-3">
+            <b><%= link_to appointment.client.fullname, appointment.client %></b>
+          </div>
+          <div class="col-sm-3">
+            <%= appointment.start.strftime("%H:%M") %> to <%= appointment.end.strftime("%H:%M") %>
+          </div>
+          <div class="col-sm-6 text-right">
+            <%= link_to 'Show', appointment %>&nbsp;
+            <%= link_to 'Edit', edit_appointment_path(appointment) %>&nbsp;
+            <%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Appointment', new_appointment_path %>
-<br>
-<%= link_to "Sub", appointments_path(format: :ics, protocol: 'webcal', only_path: false) %>
+  </div>
+  <br>
+<% end %>

@@ -1,22 +1,21 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  include AppointmentsHelper
+  skip_filter :authenticate_user!, only: [:show]
+  layout :resolve_layout
 
   # GET /appointments
   # GET /appointments.json
   def index
     @appointments = Appointment.all
-
-    respond_to do |format|
-      format.html
-      format.json
-      format.ics { render :text => generate_ical(@appointments) }
-    end
+    @appointments_months = @appointments.group_by { |t| t.start.beginning_of_day }
   end
 
   # GET /appointments/1
   # GET /appointments/1.json
   def show
+    if params[:token]
+      @client_view = true
+    end
   end
 
   # GET /appointments/new
@@ -77,5 +76,12 @@ class AppointmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
       params.require(:appointment).permit(:title, :start, :end, :notes, :client_id, :alerts, :url, :calendar_id)
+    end
+
+    def resolve_layout
+      if params[:token]
+        return 'appointments'
+      end
+      return 'application'
     end
 end

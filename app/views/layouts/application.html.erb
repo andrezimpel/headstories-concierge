@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HeadstoriesConcierge</title>
+    <title>Concierge</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <%= render "layouts/partials/header" if current_user %>
     <div class="container">
       <%= render "layouts/partials/alerts" %>
       <%= yield %>
     </div>
+    <br>
+    <br>
   </body>
 </html>

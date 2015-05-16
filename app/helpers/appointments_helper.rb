@@ -17,11 +17,11 @@ module AppointmentsHelper
             # in ICS müssen ganztägige Termine bis 0 Uhr des nächsten Tages gehen
             event.dtend = (e.end.to_time + 1.day).strftime("%Y%m%d")
           end
-          event.summary = e.title + " yo"
-          # event.location = e.location
+          event.summary = e.title
+          event.location = "Barbarossastraße 32, Chemnitz, Germany"
           # event.description = e.body
           # event.description = e.category.title
-          # event.url = root_url[0...-1] + element_app_path(e)
+          event.url = root_url[0...-1] + appointment_path(e, token: e.client.authentication_token)
           # event.add_comment("More info at http://yourwebsite.com")
         end
       end
