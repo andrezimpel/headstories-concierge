@@ -16,9 +16,10 @@ class Client < ActiveRecord::Base
   validates_uniqueness_of :email
 
 
-  before_create :generate_consent_token
-  def generate_consent_token
-    self.consent_token = Time.now.to_i.to_s(30)
+  before_create :add_generate_consent_token
+  def add_generate_consent_token
+    token = Time.now.to_i.to_s(30)
+    self.consent_token = token
   end
 
   before_create :set_default_consent

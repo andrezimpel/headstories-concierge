@@ -1,1 +1,24 @@
 <h1>Danke</h1>
+
+<p class="lead">
+  <% if @consent === 'false' %>
+    Super, dass Du an <b>head stories concierge</b> teilnimmst.
+  <% else %>
+    Du hast uns bereits Dein Einverständnis erteilt.
+  <% end %>
+</p>
+
+<p>
+  Ab sofort bekommst du Termine bequem per Email und kannst sie auch ganz einfach in Deinem Kalender abonnieren.
+</p>
+
+<p>
+  <%= link_to "Zum Kalender hinzufügen", client_path(@client, format: :ics, protocol: 'webcal', only_path: false, auth_token: @client.authentication_token) %>
+  <br>
+  <a href="#">Emails abbestellen</a>
+</p>
+
+
+<p>
+  <b>P.S.:</b> Du kannst außerdem bald Deine Termine online einsehen, verlegen lassen oder stornieren.
+</p>

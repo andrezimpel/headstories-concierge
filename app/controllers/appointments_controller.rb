@@ -80,7 +80,7 @@ class AppointmentsController < ApplicationController
 
     def resolve_layout
       if params[:token]
-        return 'appointments'
+        return 'public'
       end
       return 'application'
     end

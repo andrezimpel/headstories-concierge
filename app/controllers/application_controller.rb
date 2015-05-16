@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-
-
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -21,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   skip_filter :authenticate_client!, :if => lambda {
-    raise "Hi"
     if params[:id]
       @event = Event.find(params[:id])
       @event and @event.public?

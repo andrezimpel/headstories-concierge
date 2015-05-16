@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   skip_filter :authenticate_user!, only: [:show]
+  layout :resolve_layout
   include AppointmentsHelper
 
   # GET /clients
@@ -39,7 +40,7 @@ class ClientsController < ApplicationController
       if @client.save
         ClientMailer.constent_request(@client).deliver_now
 
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to clients_url, notice: 'Client was successfully invited.' }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new }
@@ -53,7 +54,7 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to clients_url, notice: 'Client was successfully updated.' }
         format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit }
@@ -73,15 +74,23 @@ class ClientsController < ApplicationController
   end
 
 
+  # invitation handling
+  def resend_invitation
+    @client = Client.find(params[:id])
+    ClientMailer.constent_request(@client).deliver_now
+    redirect_to clients_url, notice: 'Client was successfully reinvited.'
+  end
+
   def accept_invitation
     @client = Client.where(consent_token: params[:consent_token]).first
-    @client.update_attribute(consent: true)
-    raise "hi"
-    redirect_to thank_you_path(id: @client)
+    @consent = @client.consent
+    @client.update_attributes(consent: true) unless @consent
+    redirect_to thank_you_path(id: @client, consent: @consent)
   end
 
   def thank_you
-    @client
+    @client = Client.find(params[:id])
+    @consent = params[:consent]
   end
 
   private
@@ -93,5 +102,12 @@ class ClientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
       params.require(:client).permit(:firstname, :lastname, :gender, :formally, :consent, :email, :consent_token)
+    end
+
+    def resolve_layout
+      if params[:action] == 'thank_you'
+        return 'public'
+      end
+      return 'application'
     end
 end

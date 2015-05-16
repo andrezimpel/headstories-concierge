@@ -1,11 +1,11 @@
 <h2>head stories concierge</h2>
 <p>
-  Hallo <%= @resource.firstname %>,<br>
+  Hallo <%= @client.fullname %>,<br>
   mit <b>head stories concierge</b> erhältst Du Termine bequem per Email und kannst sie ganz einfach auch in Deinem Kalender abbonieren.
 </p>
 <p>
   Bitte klicke folgenden Link:<br>
-  <%= link_to "Bitte bestätigen", accept_invitation_url(@resource, :invitation_token => @token) %>
+  <%= link_to "Bitte bestätigen", accept_invitation_url(@client, :consent_token => consent_token) %>
 </p>
 <p>
   <small>Damit akzeptierst du, dass wir Dir Email zur Terminvereinbarung schicken dürfen.</small>
