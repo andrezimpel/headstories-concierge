@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: headstories_concierge_production
-  username: headstories-concierge
+  username: hs-concierge
   password: <%= ENV['HEADSTORIES_CONCIERGE_DATABASE_PASSWORD'] %>
   socket:
