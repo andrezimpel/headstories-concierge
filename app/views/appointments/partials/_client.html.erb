@@ -5,9 +5,10 @@
 </p>
 <h4>Informationen:</h4>
 <p>
-  <%= @appointment.start.strftime("%A, %B %e, %Y") %>
+  <%= I18n.l @appointment.start, format: "%A, %e. %B, %Y" %>
   <br>
-  <%= @appointment.start.strftime("%H:%M") %> bis <%= @appointment.end.strftime("%H:%M") %>
+  <%= I18n.l @appointment.start, format: "%H:%M" %> bis
+  <%= I18n.l @appointment.end, format: "%H:%M" %>
 </p>
 <p>
   <%= link_to "Zum Kalender hinzufügen", client_path(@appointment.client, format: :ics, protocol: 'webcal', only_path: false, auth_token: @appointment.client.authentication_token) %>
