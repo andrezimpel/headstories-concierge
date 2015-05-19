@@ -19,7 +19,7 @@ set :deploy_to, '/var/www/concierge.headstories.de' # production
 # user
 set :use_sudo, true
 
-set :rvm_ruby_version, '2.1.3p242'
+set :rvm_ruby_version, '2.1.3'
 set :rvm_type, :user
 
 set :format, :pretty
