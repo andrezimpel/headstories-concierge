@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable, :registerable
   devise :invitable, :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
+  model_stamper
+
   def fullname
     # return real fullname
     if self.firstname != nil && self.lastname != nil
