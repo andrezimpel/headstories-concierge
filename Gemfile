@@ -45,6 +45,12 @@ group :development, :test do
   gem "pry-rails"
   gem "better_errors"
   gem "binding_of_caller"
+
+  # deployment
+  gem 'capistrano', '~> 3.0.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 # frontend
