@@ -69,3 +69,8 @@ gem 'rails-i18n', '~> 4.0.0'
 
 # exceptions
 gem 'exception_notification'
+
+
+# emails
+# gem 'premailer-rails'
+gem 'roadie-rails'

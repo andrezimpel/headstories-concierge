@@ -1,17 +1,16 @@
-<h1>concierge</h1>
-<br>
 <p>
   Hallo <%= @appointment.client.firstname %>,<br>
-  hier sind Deine Informationen zu Deinem Termin.
+  <br>
+  hier sind die Informationen zu Deinem Termin.
 </p>
+<h4>Informationen:</h4>
 <p>
-  <h4>Informationen:</h4>
   <%= @appointment.start.strftime("%A, %B %e, %Y") %>
   <br>
   <%= @appointment.start.strftime("%H:%M") %> bis <%= @appointment.end.strftime("%H:%M") %>
 </p>
 <p>
-  <a href="#">Zum Kalender hinzufügen</a>
-  <br>
-  <a href="#">Verschieben</a>
+  <%= link_to "Zum Kalender hinzufügen", client_path(@appointment.client, format: :ics, protocol: 'webcal', only_path: false, auth_token: @appointment.client.authentication_token) %>
+  <!-- <br> -->
+  <!-- <a href="#">Verschieben</a> -->
 </p>
