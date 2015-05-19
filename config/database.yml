@@ -51,5 +51,5 @@ production:
   <<: *default
   database: headstories_concierge_production
   username: hs-concierge
-  password: <%= ENV['HEADSTORIES_CONCIERGE_DATABASE_PASSWORD'] %>
+  password: 3br32br7823br72b3zr782
   socket:
